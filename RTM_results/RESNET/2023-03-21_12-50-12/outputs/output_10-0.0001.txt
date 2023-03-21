@@ -1,0 +1,68 @@
+Available GPUs:  [0]
+Currently used GPU:  0
+Successfully created the directory /mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/experiments/ResNet18/results-21-03-2023-12:57:09
+Loaded model:  model_resnet7694.pt
+Inference #0
+Error rate:  0.0001
+
+Accuracy: 76.31%
+
+-----------------------------
+Inference #1
+Error rate:  0.0001
+
+Accuracy: 76.20%
+
+-----------------------------
+Inference #2
+Error rate:  0.0001
+
+Accuracy: 76.18%
+
+-----------------------------
+Inference #3
+Error rate:  0.0001
+
+Accuracy: 76.25%
+
+-----------------------------
+Inference #4
+Error rate:  0.0001
+
+Accuracy: 75.49%
+
+-----------------------------
+Inference #5
+Error rate:  0.0001
+
+Accuracy: 75.46%
+
+-----------------------------
+Inference #6
+Error rate:  0.0001
+
+Accuracy: 76.03%
+
+-----------------------------
+Inference #7
+Error rate:  0.0001
+
+Accuracy: 75.29%
+
+-----------------------------
+Inference #8
+Error rate:  0.0001
+
+Accuracy: 75.62%
+
+-----------------------------
+Inference #9
+Error rate:  0.0001
+
+Accuracy: 75.21%
+
+-----------------------------
+Successfully stored results in /mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/experiments/ResNet18/results-21-03-2023-12:57:09/results.jsonl
+-----------------------------
+[76.30573248407644, 76.20382165605095, 76.17834394904459, 76.2547770700637, 75.49044585987261, 75.46496815286623, 76.02547770700637, 75.28662420382166, 75.61783439490446, 75.21019108280255]
+-----------------------------

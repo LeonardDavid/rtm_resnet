@@ -510,5 +510,5 @@ class ResNet(nn.Module):
         out = F.max_pool2d(out, 4)
         out = out.view(out.size(0), -1)
         out = self.linear(out)
-        print("---")
+        # print("---")
         return out
