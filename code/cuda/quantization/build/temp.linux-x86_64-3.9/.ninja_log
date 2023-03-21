@@ -1,0 +1,3 @@
+# ninja log v5
+1	14887	1678789764421966600	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/quantization/build/temp.linux-x86_64-3.9/quantize.o	5592203d742dfabf
+1	36057	1678789785600361300	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/quantization/build/temp.linux-x86_64-3.9/quantize_kernels.o	d44125bf490f567a

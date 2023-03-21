@@ -1,0 +1,8 @@
+# ninja log v5
+2	14274	1678789420057735300	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/binarizationPM1FI/build/temp.linux-x86_64-3.9/binarizePM1FI.o	4c6b6447b4c1a4ce
+2	36122	1678789441906295700	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/binarizationPM1FI/build/temp.linux-x86_64-3.9/binarizePM1FI_kernel.o	2c754d046940b61e
+2	13123	1678983224709044900	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/binarizationPM1FI/build/temp.linux-x86_64-3.9/binarizePM1FI.o	4c6b6447b4c1a4ce
+3	30768	1678983320694245500	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/binarizationPM1FI/build/temp.linux-x86_64-3.9/binarizePM1FI_kernel.o	2c754d046940b61e
+3	33980	1678986157750281600	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/binarizationPM1FI/build/temp.linux-x86_64-3.9/binarizePM1FI_kernel.o	2c754d046940b61e
+6	49119	1678988506396988700	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/binarizationPM1FI/build/temp.linux-x86_64-3.9/binarizePM1FI_kernel.o	2c754d046940b61e
+6	35358	1678991764789826400	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/binarizationPM1FI/build/temp.linux-x86_64-3.9/binarizePM1FI_kernel.o	2c754d046940b61e

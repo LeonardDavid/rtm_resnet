@@ -1,0 +1,3 @@
+# ninja log v5
+2	14919	1678789382129650100	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/binarizationPM1/build/temp.linux-x86_64-3.9/binarizePM1.o	7b35d509286b691a
+2	35615	1678789402834761400	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/binarizationPM1/build/temp.linux-x86_64-3.9/binarizePM1_kernel.o	5066b30e52f7eb73

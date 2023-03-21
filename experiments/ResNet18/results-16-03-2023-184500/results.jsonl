@@ -1,0 +1,1 @@
+{"model": "ResNet18", "batchsize": 128, "epochs": 1, "learning_rate": 0.001, "gamma": 0.5, "stepsize": 50, "test_error": [74.64968152866241, 72.86624203821655]}
