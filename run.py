@@ -13,6 +13,8 @@ import sys
 import os
 import scipy
 
+import resource
+
 from scipy.stats import norm
 import matplotlib.pyplot as plt
 
@@ -225,7 +227,21 @@ def main():
         for i in range(0, loops):
             # print("\n")
             print("Inference #" + str(i))
+
+            # Get current usage in bytes
+            memory_usage = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+            # Convert to megabytes
+            memory_usage_mb = memory_usage / 1024 / 1024
+            print(f"Memory usage: {memory_usage_mb:.2f} MB")
+
             all_accuracies.append(test_error(model, device, test_loader, perror))
+
+            # Get current usage in bytes
+            memory_usage = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+            # Convert to megabytes
+            memory_usage_mb = memory_usage / 1024 / 1024
+            print(f"Memory usage: {memory_usage_mb:.2f} MB")
+
             print("-----------------------------")
 
         to_dump_data = dump_exp_data(model, args, all_accuracies)

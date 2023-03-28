@@ -1,3 +1,5 @@
 # ninja log v5
 2	15368	1678789720688413900	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/mappingdistr/build/temp.linux-x86_64-3.9/mappingdistr.o	8db29257ab350c6d
 2	41043	1678789746362263300	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/mappingdistr/build/temp.linux-x86_64-3.9/mappingdistr_kernel.o	91a66d9203c24d02
+2	15097	1680004218854221100	/mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/mappingdistr/build/temp.linux-x86_64-3.9/mappingdistr.o	94e08344adf4c37a
+3	38904	1680004242661476200	/mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/mappingdistr/build/temp.linux-x86_64-3.9/mappingdistr_kernel.o	f32d662ea27aa67c

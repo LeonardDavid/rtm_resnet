@@ -20,8 +20,8 @@ rule cuda_compile
 
 
 
-build /mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/mappingdistr/build/temp.linux-x86_64-3.9/mappingdistr.o: compile /mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/mappingdistr/mappingdistr.cpp
-build /mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/mappingdistr/build/temp.linux-x86_64-3.9/mappingdistr_kernel.o: cuda_compile /mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/mappingdistr/mappingdistr_kernel.cu
+build /mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/mappingdistr/build/temp.linux-x86_64-3.9/mappingdistr.o: compile /mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/mappingdistr/mappingdistr.cpp
+build /mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/mappingdistr/build/temp.linux-x86_64-3.9/mappingdistr_kernel.o: cuda_compile /mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/mappingdistr/mappingdistr_kernel.cu
 
 
 

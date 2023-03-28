@@ -20,8 +20,8 @@ rule cuda_compile
 
 
 
-build /mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/customMAC1dmappingdirect/build/temp.linux-x86_64-3.9/custommac1dmappingdirect.o: compile /mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/customMAC1dmappingdirect/custommac1dmappingdirect.cpp
-build /mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/customMAC1dmappingdirect/build/temp.linux-x86_64-3.9/custommac1dmappingdirect_kernel.o: cuda_compile /mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/customMAC1dmappingdirect/custommac1dmappingdirect_kernel.cu
+build /mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/customMAC1dmappingdirect/build/temp.linux-x86_64-3.9/custommac1dmappingdirect.o: compile /mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/customMAC1dmappingdirect/custommac1dmappingdirect.cpp
+build /mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/customMAC1dmappingdirect/build/temp.linux-x86_64-3.9/custommac1dmappingdirect_kernel.o: cuda_compile /mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/customMAC1dmappingdirect/custommac1dmappingdirect_kernel.cu
 
 
 

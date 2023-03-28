@@ -1,3 +1,5 @@
 # ninja log v5
 2	15204	1678789803811252500	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/quantizationFI/build/temp.linux-x86_64-3.9/quantizeFI.o	f1e20df137c0afad
 3	37020	1678789825627230000	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/quantizationFI/build/temp.linux-x86_64-3.9/quantizeFI_kernels.o	364f58b23ee90b8b
+2	15520	1680004303515614500	/mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/quantizationFI/build/temp.linux-x86_64-3.9/quantizeFI.o	86665824bf6c8037
+2	39964	1680004327958318600	/mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/quantizationFI/build/temp.linux-x86_64-3.9/quantizeFI_kernels.o	f174539ad7ef3a0b

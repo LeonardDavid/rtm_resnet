@@ -20,8 +20,8 @@ rule cuda_compile
 
 
 
-build /mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/quantization/build/temp.linux-x86_64-3.9/quantize.o: compile /mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/quantization/quantize.cpp
-build /mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/quantization/build/temp.linux-x86_64-3.9/quantize_kernels.o: cuda_compile /mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/quantization/quantize_kernels.cu
+build /mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/quantization/build/temp.linux-x86_64-3.9/quantize.o: compile /mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/quantization/quantize.cpp
+build /mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/quantization/build/temp.linux-x86_64-3.9/quantize_kernels.o: cuda_compile /mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/quantization/quantize_kernels.cu
 
 
 

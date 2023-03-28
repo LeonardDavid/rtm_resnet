@@ -1,0 +1,23 @@
+Available GPUs:  [0]
+Currently used GPU:  0
+Successfully created the directory /mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/experiments/ResNet18/results-28-03-2023-13:52:36
+Loaded model:  model_resnet7694.pt
+Inference #0
+Memory usage: 2.42 MB
+Error rate:  0.001
+
+Accuracy: 76.56%
+
+Memory usage: 2.66 MB
+-----------------------------
+Inference #1
+Memory usage: 2.66 MB
+Error rate:  0.001
+
+Accuracy: 74.39%
+
+Memory usage: 2.72 MB
+-----------------------------
+Inference #2
+Memory usage: 2.72 MB
+Error rate:  0.001

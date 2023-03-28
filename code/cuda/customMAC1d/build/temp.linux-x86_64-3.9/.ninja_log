@@ -1,3 +1,5 @@
 # ninja log v5
 2	14163	1678789458776763400	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/customMAC1d/build/temp.linux-x86_64-3.9/custommac1d.o	d13789d58694e8a1
 2	34159	1678789478784091700	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/customMAC1d/build/temp.linux-x86_64-3.9/custommac1d_kernel.o	fd7b2ffd23d893ed
+3	15408	1680003923184843700	/mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/customMAC1d/build/temp.linux-x86_64-3.9/custommac1d.o	2616b60660d94c2
+3	37769	1680003945547023200	/mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/customMAC1d/build/temp.linux-x86_64-3.9/custommac1d_kernel.o	d2c9c336991f48f9

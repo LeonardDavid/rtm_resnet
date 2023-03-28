@@ -1,3 +1,5 @@
 # ninja log v5
 3	14817	1678789688330005100	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/mappingdirect/build/temp.linux-x86_64-3.9/mappingdirect.o	ea45c6b4c88d6782
 2	28267	1678981055818503100	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/mappingdirect/build/temp.linux-x86_64-3.9/mappingdirect_kernel.o	14ddc46a6e8f8ade
+2	15224	1680004177891447500	/mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/mappingdirect/build/temp.linux-x86_64-3.9/mappingdirect.o	acd85bfb1fbedeb5
+3	37295	1680004199961322100	/mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/mappingdirect/build/temp.linux-x86_64-3.9/mappingdirect_kernel.o	240fa4ea5c73e311

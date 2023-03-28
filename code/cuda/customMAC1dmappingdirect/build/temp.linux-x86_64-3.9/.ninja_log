@@ -1,3 +1,5 @@
 # ninja log v5
 2	13711	1678789495267471500	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/customMAC1dmappingdirect/build/temp.linux-x86_64-3.9/custommac1dmappingdirect.o	daa4ab813be52b37
 2	33127	1678789514673938800	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/customMAC1dmappingdirect/build/temp.linux-x86_64-3.9/custommac1dmappingdirect_kernel.o	864fa7d8d0f0ce4a
+2	15507	1680003964966831200	/mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/customMAC1dmappingdirect/build/temp.linux-x86_64-3.9/custommac1dmappingdirect.o	d7647836d2146a9a
+3	37912	1680003987371689300	/mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/customMAC1dmappingdirect/build/temp.linux-x86_64-3.9/custommac1dmappingdirect_kernel.o	1d1374be979c21f3
