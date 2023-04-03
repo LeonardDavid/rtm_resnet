@@ -33,13 +33,15 @@ quantize = Quantize.apply
 class ErrorModel(Function):
     @staticmethod
     def forward(ctx, input, index_offset, block_size = 64, error_model=None):
-        output = input.clone().detach()
+        # output = input.clone().detach() # TODO
+        output = input
         output = error_model.applyErrorModel(input=output, index_offset=index_offset, block_size=block_size)
         return output
 
     @staticmethod
     def backward(ctx, grad_output):
-        grad_input = grad_output.clone()
+        # grad_input = grad_output.clone()
+        grad_input = grad_output
         return grad_input, None
 
 apply_error_model = ErrorModel.apply
