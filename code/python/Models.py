@@ -444,7 +444,7 @@ class ResNet(nn.Module):
         self.htanh = nn.Hardtanh()
         self.qact = QuantizedActivation(quantization=self.quantization)
 
-        print(self.error_model)
+        # print(self.error_model)
 
         self.conv1 = QuantizedConv2d(3, 64, kernel_size=3, stride=1, padding=1, quantization=self.quantization, error_model=self.error_model, test_rtm = test_rtm, index_offset = self.index_offset_conv1, lost_vals_r = self.lost_vals_r_conv1, lost_vals_l = self.lost_vals_l_conv1, block_size = self.block_size, bias=False, array_size=self.array_size)
         self.bn1 = nn.BatchNorm2d(64)
