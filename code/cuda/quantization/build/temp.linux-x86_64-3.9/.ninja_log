@@ -3,3 +3,5 @@
 1	36057	1678789785600361300	/mnt/c/Users/leona/projects/tu-dortmund/rtm/SPICE-Torch-main-resnet/code/cuda/quantization/build/temp.linux-x86_64-3.9/quantize_kernels.o	d44125bf490f567a
 3	15271	1680004261867298200	/mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/quantization/build/temp.linux-x86_64-3.9/quantize.o	a0b08992354c384c
 3	37540	1680004284137131600	/mnt/c/Users/leona/projects/tu-dortmund/RTM/rtm_resnet/code/cuda/quantization/build/temp.linux-x86_64-3.9/quantize_kernels.o	3da040d47f0c0a8d
+2	13893	1680522571717899900	/mnt/c/Users/leona/projects/tu-dortmund/rtm/rtm_resnet/code/cuda/quantization/build/temp.linux-x86_64-3.9/quantize.o	f86549f5b38b40d1
+2	33903	1680522591727682600	/mnt/c/Users/leona/projects/tu-dortmund/rtm/rtm_resnet/code/cuda/quantization/build/temp.linux-x86_64-3.9/quantize_kernels.o	e669f96982b5cc4b

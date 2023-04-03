@@ -1,0 +1,3 @@
+CMDLINE /home/leonard/miniconda3/envs/fi/bin/python run.py --model=ResNet --dataset=IMAGENETTE --batch-size=128 --epochs=1 --lr=0.001 --step-size=50 --gamma=0.5 --test-error=1 --load-model-path=model_resnet7694.pt --test_rtm=1 --loops=1 --perror=0.0
+MEM 5.480469 1680007276.3765
+MEM 18.652344 1680007276.4769
