@@ -2,6 +2,10 @@
 
 First, install PyTorch. For fast binarization/quantization and error injection during training, CUDA support is needed. To enable it, install pybind11 and CUDA toolkit.
 
+I also have the following packages installed in my environment, not everything is needed but it works:
+
+```pip install -r requirements.txt```
+
 Then, to install the CUDA-kernels, go to the folder ```code/cuda/``` and run
 
 ```./install_kernels.sh```
