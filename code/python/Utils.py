@@ -161,9 +161,12 @@ def parse_args(parser):
     parser.add_argument('--profile-time', type=int, default=None, help='Specify whether to profile the execution time by specifying the repetitions')
     parser.add_argument('--extract-absfreq', type=int, default=None, help='Specify whether to extract the absolute frequencies of MAC values')
     parser.add_argument('--extract-absfreq-resnet', type=int, default=None, help='Specify whether to extract the absolute frequencies of MAC values for ResNet')
-    parser.add_argument('--test_rtm', type=int, default=None, help='Whether to test the model using RTM shifts')
+    parser.add_argument('--test_rtm', type=int, default=None, help='Whether to test the model using RTM err_shifts')
     parser.add_argument('--perror', type=float, default=0.0, help='Error rate with which to test the model')
     parser.add_argument('--loops', type=int, default=1, help='Amount of times the inference model is run (offsets accumulate!)')
+    parser.add_argument('--protect_layers', nargs='+', type=int, default=None, help='choose which layers to protect in array e.g.: 0 1 1 1 -> first layer unprotected')
+    parser.add_argument('--err_shifts', nargs='+', type=int, default=None, help='stores the amount of err_shift occuring in each layer')
+    parser.add_argument('--block_size', type=int, default=64, help='specify the block_size of the RTM nanowire')
 
 
 

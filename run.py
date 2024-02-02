@@ -147,12 +147,17 @@ def main():
         # print("Mapping from distr idx: ", sorted_mac_mapping_idx)
 
     model = None
-    block_size = 64 # 96, 128
+    protectLayers = args.protect_layers
+    print(protectLayers)
+    err_shifts = args.err_shifts
+    print(err_shifts)
+    block_size = args.block_size # 64, 128, 256
     if args.model == "ResNet":
-        model = nn_model(BasicBlock, [2, 2, 2, 2], crit_train, crit_test, quantMethod=binarizepm1, an_sim=args.an_sim, array_size=args.array_size, mapping=mac_mapping, mapping_distr=mac_mapping_distr, sorted_mapping_idx=sorted_mac_mapping_idx, performance_mode=args.performance_mode, quantize_train=q_train, quantize_eval=q_eval, error_model=binarizepm1fi, train_model=args.train_model, extract_absfreq=args.extract_absfreq, test_rtm = args.test_rtm, block_size = block_size).to(device)
+        model = nn_model(BasicBlock, [2, 2, 2, 2], crit_train, crit_test, quantMethod=binarizepm1, an_sim=args.an_sim, array_size=args.array_size, mapping=mac_mapping, mapping_distr=mac_mapping_distr, sorted_mapping_idx=sorted_mac_mapping_idx, performance_mode=args.performance_mode, quantize_train=q_train, quantize_eval=q_eval, error_model=binarizepm1fi, train_model=args.train_model, extract_absfreq=args.extract_absfreq, test_rtm = args.test_rtm, block_size = block_size, protectLayers = protectLayers, err_shifts=err_shifts).to(device)
     else:
         # model = nn_model().to(device)
-        model = nn_model(crit_train, crit_test, quantMethod=binarizepm1, an_sim=args.an_sim, array_size=args.array_size, mapping=mac_mapping, mapping_distr=mac_mapping_distr, sorted_mapping_idx=sorted_mac_mapping_idx, performance_mode=args.performance_mode, quantize_train=q_train, quantize_eval=q_eval, error_model=binarizepm1fi, train_model=args.train_model, extract_absfreq=args.extract_absfreq, test_rtm = args.test_rtm, block_size = block_size).to(device)
+        model = nn_model(crit_train, crit_test, quantMethod=binarizepm1, an_sim=args.an_sim, array_size=args.array_size, mapping=mac_mapping, mapping_distr=mac_mapping_distr, sorted_mapping_idx=sorted_mac_mapping_idx, performance_mode=args.performance_mode, quantize_train=q_train, quantize_eval=q_eval, error_model=binarizepm1fi, train_model=args.train_model, extract_absfreq=args.extract_absfreq, test_rtm = args.test_rtm, block_size = block_size, protectLayers = protectLayers).to(device)
+    # print(model)
 
     # optimizer = optim.Adam(model.parameters(), lr=args.lr)
     optimizer = Clippy(model.parameters(), lr=args.lr)
@@ -210,6 +215,8 @@ def main():
     if args.load_model_path is not None:
             to_load = args.load_model_path
             print("Loaded model: ", to_load)
+            print("block_size: ", block_size)
+            print("-----------------------------")
             model.load_state_dict(torch.load(to_load, map_location='cuda:0'))
 
     # if args.test_error is not None:
@@ -258,7 +265,7 @@ def main():
     if args.extract_absfreq_resnet is not None:
         ####
         # abs freq test resnet
-        print(model)
+        # print(model)
         # print("--")
         # print((model.layer1[1]))
         # iterate through resnet structure to access conv and linear layer data

@@ -33,14 +33,14 @@ quantize = Quantize.apply
 class ErrorModel(Function):
     @staticmethod
     def forward(ctx, input, index_offset, block_size = 64, error_model=None):
-        # output = input.clone().detach() # TODO
+	# output = input.clone().detach()
         output = input
         output = error_model.applyErrorModel(input=output, index_offset=index_offset, block_size=block_size)
         return output
 
     @staticmethod
     def backward(ctx, grad_output):
-        # grad_input = grad_output.clone()
+	# grad_input = grad_output.clone()
         grad_input = grad_output
         return grad_input, None
 
@@ -106,6 +106,8 @@ class QuantizedLinear(nn.Linear):
         self.lost_vals_r = kwargs.pop('lost_vals_r', None)
         self.lost_vals_l = kwargs.pop('lost_vals_l', None)
         self.block_size = kwargs.pop('block_size', None)
+        self.protectLayers = kwargs.pop('protectLayers', None)
+        self.err_shifts = kwargs.pop('err_shifts', None)
         super(QuantizedLinear, self).__init__(*args, **kwargs)
 
     def forward(self, input):
@@ -119,39 +121,66 @@ class QuantizedLinear(nn.Linear):
                 quantized_weight = self.weight
             if self.error_model is not None:
 
-                if self.test_rtm is not None:
-                    shift = 0
-                    nr = 0
+
+                if self.test_rtm is not None and self.protectLayers[self.layerNR-1]==0:
+                    # print("yes Lin", self.layerNR)
+                    # print(self.block_size)
+                    # print("")
+                    # print(np.sum(self.index_offset))
+
+                    # nr_elem=0
+                    # print(quantized_weight.shape[0])
+                    # print(quantized_weight.shape[1])
+                    # for i in range(0, quantized_weight.shape[0]):
+                    #     for j in range(0, quantized_weight.shape[1]):
+                    #         nr_elem += 1
+                    #         # print(quantized_weight[i][j])
+                    #     # print("\n")
+                    # print(nr_elem)
+
+                    # print(self.index_offset.shape[0])
+                    # print(self.index_offset.shape[1])
+
+                    err_shift = 0   # number of error shifts
+                    shift = 0          # number of shifts (used for reading)
                     for i in range(0, self.index_offset.shape[0]):
                         for j in range(0, self.index_offset.shape[1]):
-                            nr += 1
-                            if(random.uniform(0.0, 1.0) < self.error_model.p):
+                            # start at 1 because AP is on the first element at the beginning, no shift is needed for reading the first value
+                            for k in range(1, self.block_size):
                                 shift += 1
-                                # 50/50 random possibility of right or left shift
-                                if(random.choice([-1,1]) == 1):
-                                    # right shift
-                                    self.index_offset[i][j] += 1
-                                    if (self.index_offset[i][j] > 64/2):
-                                        self.lost_vals_r[i][j] += 1
-                                        quantized_weight[i][(j+1)*64 - int(self.lost_vals_r[i][j])] = random.choice([-1,1])
-                                    if (self.lost_vals_l[i][j] > 0):
-                                        self.lost_vals_l[i][j] -= 1
-                                else:
-                                    # left shift
-                                    self.index_offset[i][j] -= 1
-                                    if(-self.index_offset[i][j] > 64/2):
-                                        self.lost_vals_l[i][j] += 1
-                                        quantized_weight[i][j*64 + int(self.lost_vals_l[i][j]) - 1] = random.choice([-1,1])
-                                    if(self.lost_vals_r[i][j] > 0):
-                                        self.lost_vals_r[i][j] -= 1
-
-                    # print("(lin) total shifts: " + str(shift) + "/" + str(nr))
+                                if(random.uniform(0.0, 1.0) < self.error_model.p):
+                                    err_shift += 1
+                                    # 50/50 random possibility of right or left err_shift
+                                    if(random.choice([-1,1]) == 1):
+                                        # right err_shift
+                                        if (self.index_offset[i][j] < self.block_size/2): # +1
+                                            self.index_offset[i][j] += 1
+                                        # if (self.index_offset[i][j] > 64/2):
+                                        #     self.lost_vals_r[i][j] += 1
+                                        #     quantized_weight[i][(j+1)*64 - int(self.lost_vals_r[i][j])] = random.choice([-1,1])
+                                        # if (self.lost_vals_l[i][j] > 0):
+                                        #     self.lost_vals_l[i][j] -= 1
+                                    else:
+                                        # left err_shift
+                                        if (self.index_offset[i][j] < self.block_size/2): # -1
+                                            self.index_offset[i][j] -= 1
+                                        # if(-self.index_offset[i][j] > 64/2):
+                                        #     self.lost_vals_l[i][j] += 1
+                                        #     quantized_weight[i][j*64 + int(self.lost_vals_l[i][j]) - 1] = random.choice([-1,1])
+                                        # if(self.lost_vals_r[i][j] > 0):
+                                        #     self.lost_vals_r[i][j] -= 1
                     
+                    self.err_shifts[self.layerNR-1] += err_shift
+
+                    # print("local err_shifts: " + str(err_shift) + "/" + str(shift))
+                    # print(self.err_shifts)
+
                     # print(np.sum(self.index_offset))
                     # print(self.index_offset)
 
                     # print(np.sum(self.lost_vals_r))
                     # print(np.sum(self.lost_vals_l))
+
                 quantized_weight = apply_error_model(quantized_weight, self.index_offset, self.block_size, self.error_model)
             if self.an_sim is not None:
                 # compute weight and input shapes
@@ -308,6 +337,8 @@ class QuantizedConv2d(nn.Conv2d):
         self.lost_vals_r = kwargs.pop('lost_vals_r', None)
         self.lost_vals_l = kwargs.pop('lost_vals_l', None)
         self.block_size = kwargs.pop('block_size', None)
+        self.protectLayers = kwargs.pop('protectLayers', None)
+        self.err_shifts = kwargs.pop('err_shifts', None)
         super(QuantizedConv2d, self).__init__(*args, **kwargs)
 
     def forward(self, input):
@@ -327,40 +358,66 @@ class QuantizedConv2d(nn.Conv2d):
                 quantized_bias = self.bias
             if self.error_model is not None:
 
-                if self.test_rtm is not None:
-                    # print(self.index_offset)
-                    shift = 0
-                    nr = 0
-                    for i in range(0, self.index_offset.shape[0]):
-                        for j in range(0, self.index_offset.shape[1]):
-                            nr += 1
-                            if(random.uniform(0.0, 1.0) < self.error_model.p):
-                                shift += 1
-                                # 50/50 random possibility of right or left shift
-                                if(random.choice([-1,1]) == 1):
-                                    # right shift
-                                    self.index_offset[i][j] += 1
-                                    if (self.index_offset[i][j] > 64/2):
-                                        self.lost_vals_r[i][j] += 1
-                                        quantized_weight[i][(j+1)*64 - int(self.lost_vals_r[i][j])] = random.choice([-1,1])
-                                    if (self.lost_vals_l[i][j] > 0):
-                                        self.lost_vals_l[i][j] -= 1
-                                else:
-                                    # left shift
-                                    self.index_offset[i][j] -= 1
-                                    if(-self.index_offset[i][j] > 64/2):
-                                        self.lost_vals_l[i][j] += 1
-                                        quantized_weight[i][j*64 + int(self.lost_vals_l[i][j]) - 1] = random.choice([-1,1])
-                                    if(self.lost_vals_r[i][j] > 0):
-                                        self.lost_vals_r[i][j] -= 1
-
-                    # print("(2d) total shifts: " + str(shift) + "/" + str(nr))
-                    
+                if self.test_rtm is not None and self.protectLayers[self.layerNR-1]==0:
+                    # print("yes 2D ", self.layerNR)
+                    # print(self.block_size)
+                    # print("")
                     # print(np.sum(self.index_offset))
-                    # print(self.index_offset)
+
+                    # nr_elem=0
+                    # print(quantized_weight.shape[0])
+                    # print(quantized_weight.shape[1])
+                    # for i in range(0, quantized_weight.shape[0]):
+                    #     for j in range(0, quantized_weight.shape[1]):
+                    #         nr_elem += 1
+                    #         # print(quantized_weight[i][j])
+                    #     # print("\n")
+                    # print(nr_elem)
+
+                    # print(self.index_offset.shape[0])
+                    # print(self.index_offset.shape[1])
+
+                    err_shift = 0   # number of error shifts
+                    shift = 0       # number of shifts (used for reading)
+                    for i in range(0, self.index_offset.shape[0]):      # 
+                        for j in range(0, self.index_offset.shape[1]):  # 
+                            # start at 1 because AP is on the first element at the beginning, no shift is needed for reading the first value
+                            for k in range(1, self.block_size):         #
+                                shift += 1
+                                if(random.uniform(0.0, 1.0) < self.error_model.p):
+                                    err_shift += 1
+                                    # 50/50 random possibility of right or left err_shift
+                                    if(random.choice([-1,1]) == 1):
+                                        # right err_shift
+                                        if (self.index_offset[i][j] < self.block_size/2): # +1
+                                            self.index_offset[i][j] += 1
+                                        # if (self.index_offset[i][j] > 64/2):
+                                        #     self.lost_vals_r[i][j] += 1
+                                        #     quantized_weight[i][(j+1)*64 - int(self.lost_vals_r[i][j])] = random.choice([-1,1])
+                                        # if (self.lost_vals_l[i][j] > 0):
+                                        #     self.lost_vals_l[i][j] -= 1
+                                    else:
+                                        # left err_shift
+                                        if (self.index_offset[i][j] < self.block_size/2): # -1
+                                            self.index_offset[i][j] -= 1
+                                        # if(-self.index_offset[i][j] > 64/2):
+                                        #     self.lost_vals_l[i][j] += 1
+                                        #     quantized_weight[i][j*64 + int(self.lost_vals_l[i][j]) - 1] = random.choice([-1,1])
+                                        # if(self.lost_vals_r[i][j] > 0):
+                                        #     self.lost_vals_r[i][j] -= 1
+
+                    self.err_shifts[self.layerNR-1] += err_shift
+
+                    # print("total err err_shifts: " + str(err_shift) + "/" + str(shift))
+                        
+                    # print(self.err_shifts)
+
+                    # print(np.sum(self.index_offset))
+                    # print(np.max(self.index_offset))
 
                     # print(np.sum(self.lost_vals_r))
                     # print(np.sum(self.lost_vals_l))
+
                 quantized_weight = apply_error_model(quantized_weight, self.index_offset, self.block_size, self.error_model)
             if self.an_sim is not None:
                 # get tensor sizes

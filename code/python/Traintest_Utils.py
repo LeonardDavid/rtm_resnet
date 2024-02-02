@@ -82,7 +82,12 @@ def test(model, device, test_loader, pr=1):
     with torch.no_grad():
         for data, target in test_loader:
             data, target = data.to(device), target.to(device)
+            # print("+")
+            # print(data)
+            # print(target)
+            # print(test_loader)
             output = model(data)
+            # print("-")
             test_loss += model.testcriterion.applyCriterion(output, target).mean()  # sum up batch loss
             pred = output.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
             correct += pred.eq(target.view_as(pred)).sum().item()
@@ -199,6 +204,7 @@ def test_error(model, device, test_loader, perror):
     print("Error rate: ", perror)
     accuracy = test(model, device, test_loader)
 
+    print("total_err_shifts: ", model.err_shifts)
         
     # print("end")
     # print(model.printIndexOffsets())
