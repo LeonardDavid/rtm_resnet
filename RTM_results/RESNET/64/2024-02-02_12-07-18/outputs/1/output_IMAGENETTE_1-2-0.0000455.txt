@@ -1,0 +1,26 @@
+Available GPUs:  [0]
+Currently used GPU:  0
+[0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+Successfully created the directory /mnt/c/Users/leona/Projects/TU-Dortmund/RTM/rtm_resnet/experiments/ResNet18/results-02-02-2024-12:07:33
+Loaded model:  model_resnet7694.pt
+block_size:  64
+-----------------------------
+Inference #0
+Error rate:  4.55e-05
+
+Accuracy: 77.07%
+
+total_err_shifts:  [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+-----------------------------
+Inference #1
+Error rate:  4.55e-05
+
+Accuracy: 77.27%
+
+total_err_shifts:  [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+-----------------------------
+Successfully stored results in /mnt/c/Users/leona/Projects/TU-Dortmund/RTM/rtm_resnet/experiments/ResNet18/results-02-02-2024-12:07:33/results.jsonl
+-----------------------------
+[77.07006369426752, 77.27388535031847]
+-----------------------------

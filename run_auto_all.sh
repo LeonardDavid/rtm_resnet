@@ -93,7 +93,9 @@ STEP_SIZE=25
 # echo -e "${PROTECT_LAYERS[@]}"
 
 # declare -a PERRORS=(0.001)
+# declare -a PERRORS=(0.0001)
 declare -a PERRORS=(0.0000455)
+# declare -a PERRORS=(0.00001)
 # declare -a PERRORS=(0.000001)
 
 # declare -a PERRORS=(0.1)
