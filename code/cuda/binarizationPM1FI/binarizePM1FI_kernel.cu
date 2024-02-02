@@ -188,6 +188,7 @@ torch::Tensor binarizePM1FI_cuda(
   // print(input[0]);
 
   cudaFree(d_index_offset_flat);
+  delete index_offset_flat;
 
   return input;
 }
